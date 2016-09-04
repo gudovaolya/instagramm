@@ -6,8 +6,17 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+ 
   resources :photos
   resources :comments
+
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+  resources :relationships, only: [:create, :destroy]
 
   # scope :users do
   # 	resources :photos

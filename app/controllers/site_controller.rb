@@ -1,6 +1,6 @@
 class SiteController < ApplicationController
   def index  	
   	@photos = Photo.all
-  	@comment = Comment.new   	
+  	@comment = Comment.new  	
   end  	
 end

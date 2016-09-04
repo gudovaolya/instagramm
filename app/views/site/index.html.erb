@@ -10,17 +10,26 @@
 					<div class="photo-item">
 						<div class="photo">	
 							<div class="user-photo">
-								<span class="author">Пользователь: <b><%= item.user.name %></b></span>
-							</div>			
+								<div class="author">Пользователь: <b><%= item.user.name %></b></div>
+								<% if user_signed_in? %>
+									<%= render 'shared/stats', user: item.user %>
+									<% if current_user != item.user %>
+										<% if current_user.following?(item.user) %>
+	    									<%= render 'users/unfollow', other_user: item.user %>
+	  									<% else %>
+	    									<%= render 'users/follow', other_user: item.user %>
+	  									<% end %>
+	  								<% end %>
+								<% end %>								
+							</div>										
 							<%= image_tag item.image.url(:large) %>
 						</div>
-						<p><%= item.title %></p>						
-					</div>
+						<p><%= item.title %></p>												
+					</div>					
 					<% if user_signed_in? &&  item.user_id != current_user.id %>
 						<h4>Комментировать:</h4>
 						<%= render 'comments/form', photo: item %>	
 					<% end %>
-
 					<% unless item.comments.empty? %>
 						<div class="comments-list">			
 							<h3>Комментарии: </h3>
