@@ -6,7 +6,7 @@
       <%= devise_error_messages! %>
 
       <div class="row">
-        <div class="form-group">
+        <div class="form-group row">
           <%= f.label :name, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
           <%= f.text_field :name, autofocus: true,  class: 'form-control' %>
@@ -15,7 +15,25 @@
       </div>
 
       <div class="row">
-        <div class="form-group">
+        <div class="form-group row">
+          <%= f.label :avatar, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+          <%= f.file_field :avatar, class: 'form-control' %>
+          </div>
+        </div>     
+      </div>
+
+      <div class="row">
+        <div class="form-group row">
+          <%= f.label :info, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+          <%= f.text_area :info, class: 'form-control' %>
+          </div>
+        </div>     
+      </div>     
+
+      <div class="row">
+        <div class="form-group row">
           <%= f.label :email, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
           <%= f.email_field :email, class: 'form-control' %>
@@ -24,7 +42,7 @@
       </div>
 
       <div class="row">
-        <div class="form-group">
+        <div class="form-group row">
           <%= f.label :password, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
             <% if @minimum_password_length %>
@@ -36,7 +54,7 @@
       </div>
 
       <div class="row">
-        <div class="form-group">
+        <div class="form-group row">
           <%= f.label :password_confirmation, class: 'col-sm-2 control-label' %>
           <div class="col-sm-6">
            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %> 
@@ -44,7 +62,7 @@
         </div> 
       </div>
       <div class="row">
-        <div class="form-group">
+        <div class="form-group row">
           <div class="col-sm-offset-2 col-sm-1"> <%= render "devise/shared/links" %></div>     
           <div class="col-sm-5">
             <%= f.submit "Sign up", class: 'btn btn-primary' %>

@@ -67,4 +67,43 @@ body{
 .stats span{
 	margin: 0 20px 0 0;
 }
+.content{
+	overflow: hidden;
+	width: 800px;
+	margin: 0 auto;	
+	.add-column{
+		width: 250px;
+		float: left;
+	}
+	.users-column{
+		margin: 0 0 0 280px;
+	}
+
+}
+.profile-info{
+	overflow: hidden;
+	padding: 20px;
+	.user-avatar{
+		float: left;
+		width: 150px;
+		height: 150px;
+		border: 1px solid #ccc;
+		border-radius: 50%;
+		overflow: hidden;
+		img{
+			width: 100%;
+			height: auto;
+		}		
+	}
+	.user-info{
+		margin: 0 0 0 200px;
+		font-size: 16px;
+		h4{
+			margin: 20px 0 5px;
+		}
+		p.descr{
+			font-size: 14px;
+		}
+	}
+}
 

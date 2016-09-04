@@ -2,11 +2,16 @@
 <h1>Ваш профиль:</h1>	
 	<p><%= link_to 'Загрузить фото', new_photo_path %></p>	
 	<div class="content">
-		<div class="profile-block">
-			<div class="avatar"></div>
+		<div class="profile-block">			
 			<div class="profile-info">
-				<h4><%= @user.name %></h4>
-				<p><%= @user.email %></p>
+				<div class="user-avatar">
+					<%= image_tag @user.avatar.url(:medium) %>
+				</div>
+				<div class="user-info">
+					<h4><b>Мое имя:</b> <%= @user.name %></h4>
+					<p><b>Мой e-mail:</b> <%= @user.email %></p>			
+					<p class="descr"><b>Немного информации обо мне:</b><br> <%= @user.info %></p>
+				</div>				
 			</div>
 		</div>
 		<div class="main-column">

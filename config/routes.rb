@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root 'site#index'
 
   get 'users/show/:id' => 'users#show', as: 'profile'
+  get 'users/following/:id' => 'users#following', as: 'followed_users'
+  get 'users/followers/:id' => 'users#followers', as: 'followers'
 
   devise_for :users
 
- 
+
   resources :photos
   resources :comments
 

@@ -7,7 +7,7 @@
 
 
     <div class="row">
-      <div class="form-group">
+      <div class="form-group row">
         <%= f.label :name, class: 'col-sm-2 control-label' %>
         <div class="col-sm-6">
         <%= f.text_field :name, autofocus: true,  class: 'form-control' %>
@@ -16,7 +16,25 @@
     </div>
 
     <div class="row">
-      <div class="form-group">
+        <div class="form-group row">
+          <%= f.label :avatar, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+          <%= f.file_field :avatar, class: 'form-control' %>
+          </div>
+        </div>     
+      </div>
+
+      <div class="row">
+        <div class="form-group row">
+          <%= f.label :info, class: 'col-sm-2 control-label' %>
+          <div class="col-sm-6">
+          <%= f.text_area :info, class: 'form-control' %>
+          </div>
+        </div>     
+      </div>  
+
+    <div class="row">
+      <div class="form-group row">
         <%= f.label :email, class: 'col-sm-2 control-label' %>
         <div class="col-sm-6">
         <%= f.email_field :email, class: 'form-control' %>
@@ -29,7 +47,7 @@
     <% end %>
 
     <div class="row">
-      <div class="form-group">
+      <div class="form-group row">
         <div class="col-sm-2">
           <%= f.label :password, class: 'control-label' %>
           <i>(leave blank if you don't want to change it)</i>
@@ -44,7 +62,7 @@
     </div>
 
     <div class="row">
-      <div class="form-group">
+      <div class="form-group row">
         <%= f.label :password_confirmation, class: 'col-sm-2 control-label' %>
         <div class="col-sm-6">
          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %> 
@@ -53,7 +71,7 @@
     </div>
 
     <div class="row">
-      <div class="form-group">
+      <div class="form-group row">
         <div class="col-sm-2">
           <%= f.label :current_password, class: 'control-label' %> 
           <i>(we need your current password to confirm your changes)</i>
@@ -65,7 +83,7 @@
     </div>
 
     <div class="row">
-      <div class="form-group">      
+      <div class="form-group row">      
         <div class="col-sm-offset-2 col-sm-6">
           <%= f.submit "Update", class: 'btn btn-primary' %>
         </div>
