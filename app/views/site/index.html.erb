@@ -1,0 +1,40 @@
+<div class="container">
+	<h1>Лента</h1>
+	<% if user_signed_in? %>	
+		<p><%= link_to 'Загрузить фото', new_photo_path %></p>
+	<% end %>
+	<div class="content">
+		<div class="main-column">
+			<% @photos.each do |item| %>
+				<div class="photo-block">
+					<div class="photo-item">
+						<div class="photo">	
+							<div class="user-photo">
+								<span class="author">Пользователь: <b><%= item.user.name %></b></span>
+							</div>			
+							<%= image_tag item.image.url(:large) %>
+						</div>
+						<p><%= item.title %></p>						
+					</div>
+					<% if user_signed_in? &&  item.user_id != current_user.id %>
+						<h4>Комментировать:</h4>
+						<%= render 'comments/form', photo: item %>	
+					<% end %>
+
+					<% unless item.comments.empty? %>
+						<div class="comments-list">			
+							<h3>Комментарии: </h3>
+							<% item.comments.each do |comment| %>	
+								<div class="comment-item">
+									<p><%= comment.content %> <span class="author">Автор комментария: <b><%= comment.user.name %></b></span></p>						
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
