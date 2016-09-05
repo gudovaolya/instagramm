@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-  resources :photos
+  resources :photos do
+  	member do
+    	put "like", to: "photos#upvote"
+    	put "dislike", to: "photos#downvote"
+  	end
+  end
+
   resources :comments
 
   resources :users do
@@ -19,6 +25,9 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+
+
+
 
   # scope :users do
   # 	resources :photos

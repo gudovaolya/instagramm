@@ -8,8 +8,7 @@
 			<div class="follow-users">
 				<% @users.each do |item| %>    
 				    <div class="follow-users-item">
-				    	<p><%= item.name %></p>
-						<p><%= item.email %></p>        
+				    	<p>Имя: <%= item.name %>, email: <%= item.email %></p>						      
 				    </div>   
 				<% end %>
 			</div>

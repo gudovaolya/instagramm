@@ -5,14 +5,14 @@ class UsersController < ApplicationController
   	end
 
 	def following
-	    @title = "Ваши подписчики"
+	    @title = "Ваши подписки"
 	    @user = User.find(params[:id])
 	    @users = @user.followed_users
 	    render 'show_follow'    
 	end
 
 	def followers
-	    @title = "Ваши подписки"
+	    @title = "Ваши подписчики"
 	    @user = User.find(params[:id])
 	    @users = @user.followers
 	    render 'show_follow'

@@ -19,6 +19,19 @@ class PhotosController < ApplicationController
 	  	redirect_to :back
 	end
 
+
+	def upvote 
+	  @photo = Photo.find(params[:id])
+	  @photo.upvote_by current_user
+	  redirect_to :back
+	end  
+
+	def downvote
+	  @photo = Photo.find(params[:id])
+	  @photo.downvote_by current_user
+	  redirect_to :back
+	end
+
 	private
 	def photo_params
 		params.require(:photo).permit(:image, :title, :user_id)		

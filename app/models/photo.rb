@@ -1,7 +1,10 @@
 class Photo < ApplicationRecord
 
+	acts_as_votable
+	paginates_per 2
+
 	belongs_to :user
-	has_many :comments
+	has_many :comments, dependent: :destroy
 
 	has_attached_file :image,                    
                     styles: {large: '600x600>', medium: '200x200>', thumb: '60x60>'} 

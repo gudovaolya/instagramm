@@ -24,7 +24,24 @@
 							</div>										
 							<%= image_tag item.image.url(:large) %>
 						</div>
-						<p><%= item.title %></p>												
+						<p><%= item.title %></p>
+						
+
+						<% if current_user != item.user %>
+							<div>							
+							    <%= link_to like_photo_path(item), method: :put do %>
+								  	Like
+								<% end %>
+								<%= link_to dislike_photo_path(item), method: :put do %>
+	  								Dislile
+								<% end %>
+							</div>
+						<% end %>
+							<div>
+								Понравилось:  <%= item.get_upvotes.size %>
+								Не понравилось: <%= item.get_downvotes.size %>
+							</div>
+						
 					</div>					
 					<% if user_signed_in? &&  item.user_id != current_user.id %>
 						<h4>Комментировать:</h4>
@@ -42,8 +59,7 @@
 					<% end %>
 				</div>
 			<% end %>
+			<%= paginate @photos %>
 		</div>
 	</div>
 </div>
-
-
