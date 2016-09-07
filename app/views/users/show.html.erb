@@ -1,6 +1,8 @@
-<div class="container">
-<h1>Ваш профиль:</h1>	
-	<p><%= link_to 'Загрузить фото', new_photo_path %></p>	
+<div class="container">	
+	<h1>Профиль:</h1>
+	<% if current_user == @user %>	
+		<p><%= link_to 'Загрузить фото', new_photo_path %></p>
+	<% end %>
 	<div class="content">
 		<div class="profile-block">			
 			<div class="profile-info">
@@ -15,17 +17,20 @@
 			</div>
 		</div>
 		<div class="main-column">
+			<h2>Мои фотографии:</h2>
 			<% @photos.each do |item| %>
 				<div class="photo-block">
 					<div class="photo-item">
 						<div class="photo">				
 							<%= image_tag item.image.url(:large) %>
 						</div>
-						<p><%= item.title %></p>		
+						<p><%= item.title %></p>
+						<% if current_user == @user %>		
 						<p class="al-right"><%= link_to "Удалить", photo_path(item), method: :delete, 
 								data: {confirm: "Вы действительно хотите удалить это фото?"},
 								class: "btn  btn-danger"
 						%></p>
+						<% end %>
 					</div>					
 					<% unless item.comments.empty? %>
 						<div class="comments-list">			

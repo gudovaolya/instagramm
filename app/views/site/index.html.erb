@@ -12,15 +12,21 @@
 							<div class="user-photo">
 								<div class="author">Пользователь: <b><%= item.user.name %></b></div>
 								<% if user_signed_in? %>
-									<%= render 'shared/stats', user: item.user %>
+									<% if current_user == item.user %>								
+										<%= render 'shared/stats', user: item.user %>
+									<% else %>
+										<%= render 'shared/stats_not_current_user', user: item.user %>
+									<% end %>
 									<% if current_user != item.user %>
-										<% if current_user.following?(item.user) %>
-	    									<%= render 'users/unfollow', other_user: item.user %>
-	  									<% else %>
-	    									<%= render 'users/follow', other_user: item.user %>
-	  									<% end %>
+										<div id="follow_form">
+											<% if current_user.following?(item.user) %>
+		    									<%= render 'users/unfollow', other_user: item.user %>
+		  									<% else %>
+		    									<%= render 'users/follow', other_user: item.user %>
+		  									<% end %>
+		  								</div>	
 	  								<% end %>
-								<% end %>								
+								<% end %>															
 							</div>										
 							<%= image_tag item.image.url(:large) %>
 						</div>

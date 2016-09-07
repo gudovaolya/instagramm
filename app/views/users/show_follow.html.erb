@@ -1,16 +1,32 @@
-<div class="container">
-	<h1><%= @title %></h1>
+<div class="container">	
 	<div class="content">
-		<div class="add-column">
-			<%= current_user.name %>
+		<div class="profile-block">			
+			<div class="profile-info">
+				<div class="user-avatar">
+					<%= image_tag @user.avatar.url(:medium) %>
+				</div>
+				<div class="user-info">
+					<h4><b>Мое имя:</b> <%= @user.name %></h4>
+					<p><b>Мой e-mail:</b> <%= @user.email %></p>			
+					<p class="descr"><b>Немного информации обо мне:</b><br> <%= @user.info %></p>
+				</div>				
+			</div>
 		</div>
-		<div class="users-column">
-			<div class="follow-users">
-				<% @users.each do |item| %>    
-				    <div class="follow-users-item">
-				    	<p>Имя: <%= item.name %>, email: <%= item.email %></p>						      
-				    </div>   
-				<% end %>
+		<div class="main-column">
+			<h3><%= @title %></h3>
+			<div class="users-column">
+				<div class="follow-users">
+					<% @users.each do |item| %>    
+					    <div class="follow-users-item">
+					    	<div class="follow-users-photo">
+					    		<%= image_tag item.avatar.url(:thumb) %>
+					    	</div>
+					    	<p>Имя: <%= item.name %>, email: <%= item.email %></p>
+					    	<p class="descr"><%= item.info %></p>
+					    	<p><%= link_to "Подробнее", profile_path(item) %></p>				      
+					    </div>   
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

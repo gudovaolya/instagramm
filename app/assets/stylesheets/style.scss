@@ -71,14 +71,6 @@ body{
 	overflow: hidden;
 	width: 800px;
 	margin: 0 auto;	
-	.add-column{
-		width: 250px;
-		float: left;
-	}
-	.users-column{
-		margin: 0 0 0 280px;
-	}
-
 }
 .profile-info{
 	overflow: hidden;
@@ -104,6 +96,34 @@ body{
 		p.descr{
 			font-size: 14px;
 		}
+	}
+}
+.follow-users-item{
+	overflow: hidden;
+	padding: 10px;
+	margin: 0 0 20px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	.follow-users-photo{
+		width: 80px;
+		height: 80px;
+		overflow: hidden;
+		float: left;
+		border-radius: 50%;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+	p{
+		margin: 10px 0 0 110px;
+	}
+
+	p.descr{
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		margin-top: 0;
 	}
 }
 
