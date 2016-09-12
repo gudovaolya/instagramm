@@ -6,13 +6,18 @@ class CommentsController < ApplicationController
 	end
 
 	def create		
-		@comment = Comment.new(comment_params)		
+		@comment = Comment.new(comment_params)			
 		if @comment.save	  				
 	  		redirect_to root_path
 	  	else
 	  		flash.now[:alert] = "Комментарий не добавлен!"
 	  		redirect_to root_path	  	  				
 	  	end	
+	end
+
+	def destroy
+		Comment.destroy(params[:id])
+	  	redirect_to :back
 	end
 
 	private

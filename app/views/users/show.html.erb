@@ -24,21 +24,32 @@
 						<div class="photo">				
 							<%= image_tag item.image.url(:large) %>
 						</div>
-						<p><%= item.title %></p>
+						<p class="photo-descr"><b>Описание к фото: </b> <%= item.title %></p>
 						<% if current_user == @user %>		
-						<p class="al-right"><%= link_to "Удалить", photo_path(item), method: :delete, 
+						<p class="al-right"><%= link_to "Удалить фото", photo_path(item), method: :delete, 
 								data: {confirm: "Вы действительно хотите удалить это фото?"},
 								class: "btn  btn-danger"
 						%></p>
 						<% end %>
-					</div>					
+					</div>			
 					<% unless item.comments.empty? %>
 						<div class="comments-list">			
 							<h3>Комментарии: </h3>
 							<% item.comments.each do |comment| %>	
 								<div class="comment-item">
-									<p><%= comment.content %> <span class="author">Автор комментария: <b><%= comment.user.name %></b></span></p>						
-								</div>
+									<div class="comment-photo">
+										<%= image_tag comment.user.avatar.url(:thumb) %>
+									</div>
+									<div class="comment-cont">
+										<b class="author"><%= comment.user.name %></b>
+										<p><%= comment.content %></p>
+										<% if user_signed_in? && current_user == item.user %>
+											<p class="al-right"><%= link_to "Удалить комментарий", comment_path(comment), method: :delete, 
+											data: {confirm: "Вы действительно хотите удалить этот комментарий"}
+											%></p>
+										<% end %>
+									</div>
+								</div>							
 							<% end %>
 						</div>
 					<% end %>
@@ -47,3 +58,5 @@
 		</div>
 	</div>
 </div>
+
+
